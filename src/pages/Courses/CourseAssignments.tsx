@@ -1,5 +1,3 @@
-// src/pages/Courses/CourseAssignments.tsx
-
 import { Row as TRow } from "@tanstack/react-table";
 import Table from "components/Table/Table";
 import React from 'react';
@@ -11,9 +9,8 @@ interface CourseAssignmentsProps {
 }
 
 const CourseAssignments: React.FC<CourseAssignmentsProps> = ({ courseId, courseName }) => {
-  // Generate fake assignments for this specific course
   const generateFakeAssignments = () => {
-    const numAssignments = 3 + Math.floor(Math.random() * 3); // 3-5 assignments per course
+    const numAssignments = 3 + Math.floor(Math.random() * 3);
     return Array.from({ length: numAssignments }, (_, idx) => ({
       id: parseInt(`${courseId}${idx}`),
       name: `Assignment ${idx + 1} for ${courseName}`,
