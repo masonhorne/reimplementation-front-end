@@ -79,7 +79,7 @@ import {
 		  );
 		},
 		enableSorting: false,
-		enableColumnFilter: false,  // Updated to use enableColumnFilter
+		enableColumnFilter: false,
 	  };
   
 	  const selectableColumn = selectable ? [{

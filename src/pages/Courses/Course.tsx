@@ -15,11 +15,12 @@ import DeleteCourse from "./CourseDelete";
 import CourseAssignments from "./CourseAssignments";
 import { formatDate, mergeDataAndNames } from "./CourseUtil";
 
-
 /**
  * @author Atharva Thorve, on December, 2023
  * @author Mrityunjay Joshi on December, 2023
+ * @author Mark Feng on December, 2024
  */
+
 const Courses = () => {
   const { error, isLoading, data: CourseResponse, sendRequest: fetchCourses } = useAPI();
   const { data: InstitutionResponse, sendRequest: fetchInstitutions } = useAPI();
@@ -95,7 +96,6 @@ const Courses = () => {
     []
   );
 
-  // New: renderSubComponent for expanded course rows
   const renderSubComponent = useCallback(({ row }: { row: TRow<ICourseResponse> }) => {
 	return (
 	  <CourseAssignments
