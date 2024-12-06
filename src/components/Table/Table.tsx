@@ -1,30 +1,31 @@
 import {
 	ColumnDef,
 	ColumnFiltersState,
+	ExpandedState,
 	flexRender,
 	getCoreRowModel,
+	getExpandedRowModel,
 	getFilteredRowModel,
 	getPaginationRowModel,
 	getSortedRowModel,
 	SortingState,
 	useReactTable,
-	ExpandedState,
-	getExpandedRowModel,
-  } from "@tanstack/react-table";
-  import React, { useEffect, useMemo, useRef, useState } from "react";
-  import { Col, Container, Row, Table as BTable } from "react-bootstrap";
-  import { BsChevronRight, BsChevronDown } from "react-icons/bs";
-  import ColumnFilter from "./ColumnFilter";
-  import GlobalFilter from "./GlobalFilter";
-  import Pagination from "./Pagination";
-  import RowSelectCheckBox from "./RowSelectCheckBox";
-  import { FaSearch } from "react-icons/fa";
+} from "@tanstack/react-table";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Table as BTable, Col, Container, Row } from "react-bootstrap";
+import { BsChevronDown, BsChevronRight } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
+import ColumnFilter from "./ColumnFilter";
+import GlobalFilter from "./GlobalFilter";
+import Pagination from "./Pagination";
+import RowSelectCheckBox from "./RowSelectCheckBox";
   
   interface TableProps {
 	data: Record<string, any>[];
 	columns: ColumnDef<any, any>[];
 	showGlobalFilter?: boolean;
 	showColumnFilter?: boolean;
+	includeSearch?: boolean;
 	showPagination?: boolean;
 	tableSize?: { span: number; offset: number };
 	columnVisibility?: Record<string, boolean>;
@@ -39,6 +40,7 @@ import {
 	showGlobalFilter = false,
 	showColumnFilter = true,
 	showPagination = true,
+	includeSearch = true,
 	onSelectionChange,
 	columnVisibility = {},
 	tableSize = { span: 12, offset: 0 },
@@ -159,19 +161,21 @@ import {
   
 	return (
 	  <>
-		<Container>
-		  <Row className="mb-md-2">
-			<Col md={{ span: 12 }}>
-			  {isGlobalFilterVisible && (
-				<GlobalFilter filterValue={globalFilter} setFilterValue={setGlobalFilter} />
-			  )}
-			</Col>
-			<span style={{ marginLeft: "5px" }} onClick={toggleGlobalFilter}>
-			  <FaSearch style={{ cursor: "pointer" }} />
-			  {isGlobalFilterVisible ? " Hide" : " Show"}
-			</span>
-		  </Row>
-		</Container>
+		{includeSearch && (
+			<Container>
+			  <Row className="mb-md-2">
+				<Col md={{ span: 12 }}>
+				  {isGlobalFilterVisible && (
+					<GlobalFilter filterValue={globalFilter} setFilterValue={setGlobalFilter} />
+				  )}
+				</Col>
+				<span style={{ marginLeft: "5px" }} onClick={toggleGlobalFilter}>
+				  <FaSearch style={{ cursor: "pointer" }} />
+				  {isGlobalFilterVisible ? " Hide" : " Show"}
+				</span>
+			  </Row>
+			</Container>
+		)}
 		<Container>
 		  <Row>
 			<Col md={tableSize}>
