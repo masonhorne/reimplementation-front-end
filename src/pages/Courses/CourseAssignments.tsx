@@ -106,8 +106,8 @@ const CourseAssignments: React.FC<CourseAssignmentsProps> = ({ courseId, courseN
       name: `Assignment ${idx + 1} for ${courseName}`,
       courseName: courseName,
       description: "This is a fake assignment",
-      created_at: new Date(Date.now() - Math.random() * 10000000000).toISOString(),
-      updated_at: new Date().toISOString(),
+      created_at: new Date(Date.now() - Math.random() * 10000000000).toISOString().slice(0, 16).replace('T', ' '),
+      updated_at: new Date().toISOString().slice(0, 16).replace('T', ' '),
     }));
   };
 
