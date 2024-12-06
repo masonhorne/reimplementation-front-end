@@ -155,6 +155,7 @@ export interface IAssignmentResponse {
   name: string;
   course_id: number;
   courseName: string;
+  institutionName: string;
   created_at: Date; 
   updated_at: Date; 
   directory_path: string;

@@ -1,5 +1,5 @@
-import { BsPencilFill, BsPersonXFill } from "react-icons/bs";
 import { Row, createColumnHelper } from "@tanstack/react-table";
+import { BsPencilFill, BsPersonXFill } from "react-icons/bs";
 
 import { Button } from "react-bootstrap";
 import { IAssignmentResponse as IAssignment } from "../../utils/interfaces";
@@ -10,8 +10,8 @@ export const assignmentColumns = (handleEdit: Fn, handleDelete: Fn) => [
   columnHelper.accessor("name", {
     header: "Name",
   }),
-  columnHelper.accessor("courseName", {
-    header: "Course Name",
+  columnHelper.accessor("institutionName", {
+    header: "Institution Name",
   }),
   columnHelper.accessor("created_at", {
     header: "Creation Date",
